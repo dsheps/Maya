@@ -1,0 +1,15 @@
+global proc zeroAttributes () {
+//create variables
+  stringArray $list[];
+  string $i
+  
+  //Get a list of the selected objects
+  stringArray $list[] = 'ls -sl';
+  
+  //loop through each selection and zero out the attributes.
+  for( $item in $list[] ) {
+			setAttr ($item + .translateX 0);
+      setAttr ($item + .translateY 0);
+      setAttr ($item + .translateZ 0);
+		}
+}
