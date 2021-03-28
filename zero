@@ -1,16 +1,7 @@
-global proc zeroAttributes () {
-//create variables
-  //Get a list of the selected objects
-  string $selectionList[] = `ls -sl`;
-  
-  //loop through each selection and zero out the attributes.
-     for ($eachObj in $selectionList)    
-    setAttr ($eachObj + ".rotateX") 0;
-    setAttr ($eachObj + ".rotateY") 0;
-    setAttr ($eachObj + ".rotateZ") 0;
-}
+//This will zero out a control or a set of selected control objects on a character rig in Maya.
+//You can add each one of the following procedures to a hotkey in Maya for quick and easy zeroing out of controls.
 
-//----------Rotate Zero
+//----------Rotate Zero - set this code to a hotkey of your choice in Maya.
 global proc zeroRAttributes () {
 //create variables
 string $ctrl ;
@@ -31,8 +22,8 @@ string $ctrl ;
     
 }
 zeroRAttributes ()
-
-//---------Translate Zero
+//------------End of Rotate Zero--------------------------
+//---------Translate Zero - set this code to a hotkey of your choice in Maya.
 
 global proc zeroTAttributes () {
 //create variables
@@ -54,8 +45,8 @@ string $ctrl ;
     
 }
 zeroTAttributes ()
-
-//----------Scale Zero
+//--------------End of Translate zero -----------------------------------
+//----------Scale Zero - set this code to a hotkey of your choice in Maya.
 global proc zeroSAttributes () {
 //create variables
 string $ctrl ;
@@ -76,3 +67,4 @@ string $ctrl ;
     
 }
 zeroSAttributes ()
+//----------------------End of Scale Zero-----------------------------------
