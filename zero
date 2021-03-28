@@ -1,3 +1,16 @@
+global proc zeroAttributes () {
+//create variables
+  //Get a list of the selected objects
+  string $selectionList[] = `ls -sl`;
+  
+  //loop through each selection and zero out the attributes.
+     for ($eachObj in $selectionList)    
+    setAttr ($eachObj + ".rotateX") 0;
+    setAttr ($eachObj + ".rotateY") 0;
+    setAttr ($eachObj + ".rotateZ") 0;
+}
+
+//----------Rotate Zero
 global proc zeroRAttributes () {
 //create variables
 string $ctrl ;
@@ -17,6 +30,9 @@ string $ctrl ;
      setAttr ($selectionList[$i] + ".rotateZ") 0;
     
 }
+zeroRAttributes ()
+
+//---------Translate Zero
 
 global proc zeroTAttributes () {
 //create variables
@@ -38,6 +54,7 @@ string $ctrl ;
     
 }
 
+//----------Scale Zero
 global proc zeroSAttributes () {
 //create variables
 string $ctrl ;
@@ -57,4 +74,3 @@ string $ctrl ;
      setAttr ($selectionList[$i] + ".scaleZ") 1;
     
 }
-
