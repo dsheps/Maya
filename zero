@@ -5,20 +5,39 @@
 global proc zeroRAttributes () {
 //create variables
 string $ctrl ;
+int $lock;
   //Get a list of the selected objects
   string $selectionList[] = `ls -sl`;
   
   //loop through each selection and zero out the attributes.
-     for ($i=0; $i < `size $selectionList`; $i++) 
-     setAttr ($selectionList[$i] + ".rotateX") 0;
-
-  //loop through each selection and zero out the attributes.
-     for ($i=0; $i < `size $selectionList`; $i++) 
-     setAttr ($selectionList[$i] + ".rotateY") 0;
+     for ($i=0; $i < `size $selectionList`; $i++) {
+         int $lock = `getAttr -lock ($selectionList[$i] + ".rotateX")`;
+            if ($lock == 1) {
+                print ("Rotation X is locked and can't be set to 0 on " + $selectionList[$i]);
+            } else {
+                    setAttr ($selectionList[$i] + ".rotateX") 0;
+             }
+        }    
     
   //loop through each selection and zero out the attributes.
-     for ($i=0; $i < `size $selectionList`; $i++) 
-     setAttr ($selectionList[$i] + ".rotateZ") 0;
+     for ($i=0; $i < `size $selectionList`; $i++) {
+         int $lock = `getAttr -lock ($selectionList[$i] + ".rotateY")`;
+            if ($lock == 1) {
+                print ("Rotation Y is locked and can't be set to 0 on " + $selectionList[$i]);
+            } else {
+                    setAttr ($selectionList[$i] + ".rotateY") 0;
+             }
+        }
+  //loop through each selection and zero out the attributes.
+     for ($i=0; $i < `size $selectionList`; $i++) {
+         int $lock = `getAttr -lock ($selectionList[$i] + ".rotateZ")`;
+          if ($lock == 1) {
+                 print ("Rotation Z is locked and can't be set to 0 on " + $selectionList[$i]);
+          } else {
+                    setAttr ($selectionList[$i] + ".rotateZ") 0;
+          }  
+         
+     }
     
 }
 zeroRAttributes ()
