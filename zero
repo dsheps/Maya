@@ -53,6 +53,7 @@ string $ctrl ;
      setAttr ($selectionList[$i] + ".translateZ") 0;
     
 }
+zeroTAttributes ()
 
 //----------Scale Zero
 global proc zeroSAttributes () {
@@ -74,3 +75,4 @@ string $ctrl ;
      setAttr ($selectionList[$i] + ".scaleZ") 1;
     
 }
+zeroSAttributes ()
