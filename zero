@@ -1,14 +1,60 @@
-global proc zeroAttributes () {
+global proc zeroRAttributes () {
 //create variables
-  string $item;
-  
+string $ctrl ;
   //Get a list of the selected objects
   string $selectionList[] = `ls -sl`;
   
   //loop through each selection and zero out the attributes.
-     for ($eachObj in $selectionList)     print ($eachObj + "\n"); 
-    setAttr ($eachObj + ".translateX") 0;
-    setAttr ($eachObj + ".translateY") 0;
-    setAttr ($eachObj + ".translateZ") 0;
+     for ($i=0; $i < `size $selectionList`; $i++) 
+     setAttr ($selectionList[$i] + ".rotateX") 0;
+
+  //loop through each selection and zero out the attributes.
+     for ($i=0; $i < `size $selectionList`; $i++) 
+     setAttr ($selectionList[$i] + ".rotateY") 0;
+    
+  //loop through each selection and zero out the attributes.
+     for ($i=0; $i < `size $selectionList`; $i++) 
+     setAttr ($selectionList[$i] + ".rotateZ") 0;
+    
+}
+
+global proc zeroTAttributes () {
+//create variables
+string $ctrl ;
+  //Get a list of the selected objects
+  string $selectionList[] = `ls -sl`;
+  
+  //loop through each selection and zero out the attributes.
+     for ($i=0; $i < `size $selectionList`; $i++) 
+     setAttr ($selectionList[$i] + ".translateX") 0;
+
+  //loop through each selection and zero out the attributes.
+     for ($i=0; $i < `size $selectionList`; $i++) 
+     setAttr ($selectionList[$i] + ".translateY") 0;
+    
+  //loop through each selection and zero out the attributes.
+     for ($i=0; $i < `size $selectionList`; $i++) 
+     setAttr ($selectionList[$i] + ".translateZ") 0;
+    
+}
+
+global proc zeroSAttributes () {
+//create variables
+string $ctrl ;
+  //Get a list of the selected objects
+  string $selectionList[] = `ls -sl`;
+  
+  //loop through each selection and zero out the attributes.
+     for ($i=0; $i < `size $selectionList`; $i++) 
+     setAttr ($selectionList[$i] + ".scaleX") 1;
+
+  //loop through each selection and zero out the attributes.
+     for ($i=0; $i < `size $selectionList`; $i++) 
+     setAttr ($selectionList[$i] + ".scaleY") 1;
+    
+  //loop through each selection and zero out the attributes.
+     for ($i=0; $i < `size $selectionList`; $i++) 
+     setAttr ($selectionList[$i] + ".scaleZ") 1;
+    
 }
 
