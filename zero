@@ -40,10 +40,10 @@ int $lock;
      }
     
 }
-zeroRAttributes ()
+zeroRAttributes ();
+
 //------------End of Rotate Zero--------------------------
 //---------Translate Zero - set this code to a hotkey of your choice in Maya.
-
 global proc zeroTAttributes () {
 //create variables
 string $ctrl ;
@@ -51,19 +51,38 @@ string $ctrl ;
   string $selectionList[] = `ls -sl`;
   
   //loop through each selection and zero out the attributes.
-     for ($i=0; $i < `size $selectionList`; $i++) 
-     setAttr ($selectionList[$i] + ".translateX") 0;
+     for ($i=0; $i < `size $selectionList`; $i++) {
+         int $lock = `getAttr -lock ($selectionList[$i] + ".translateX")`;
+            if ($lock == 1) {
+                print ("translate X is locked and can't be set to 0 on " + $selectionList[$i]);
+            } else {
+                    setAttr ($selectionList[$i] + ".translateX") 0;
+             }
+        }  
 
   //loop through each selection and zero out the attributes.
-     for ($i=0; $i < `size $selectionList`; $i++) 
-     setAttr ($selectionList[$i] + ".translateY") 0;
+     for ($i=0; $i < `size $selectionList`; $i++) {
+         int $lock = `getAttr -lock ($selectionList[$i] + ".translateY")`;
+            if ($lock == 1) {
+                print ("translate Y is locked and can't be set to 0 on " + $selectionList[$i]);
+            } else {
+                    setAttr ($selectionList[$i] + ".translateY") 0;
+             }
+        }  
     
   //loop through each selection and zero out the attributes.
-     for ($i=0; $i < `size $selectionList`; $i++) 
-     setAttr ($selectionList[$i] + ".translateZ") 0;
+     for ($i=0; $i < `size $selectionList`; $i++) {
+         int $lock = `getAttr -lock ($selectionList[$i] + ".translateZ")`;
+            if ($lock == 1) {
+                print ("translate Z is locked and can't be set to 0 on " + $selectionList[$i]);
+            } else {
+                    setAttr ($selectionList[$i] + ".translateZ") 0;
+             }
+        }  
     
 }
-zeroTAttributes ()
+zeroTAttributes ();
+
 //--------------End of Translate zero -----------------------------------
 //----------Scale Zero - set this code to a hotkey of your choice in Maya.
 global proc zeroSAttributes () {
@@ -73,17 +92,36 @@ string $ctrl ;
   string $selectionList[] = `ls -sl`;
   
   //loop through each selection and zero out the attributes.
-     for ($i=0; $i < `size $selectionList`; $i++) 
-     setAttr ($selectionList[$i] + ".scaleX") 1;
+     for ($i=0; $i < `size $selectionList`; $i++) {
+         int $lock = `getAttr -lock ($selectionList[$i] + ".scaleX")`;
+            if ($lock == 1) {
+                print ("Scale X is locked and can't be set to 0 on " + $selectionList[$i]);
+            } else {
+                    setAttr ($selectionList[$i] + ".scaleX") 1;
+             }
+        }  
 
   //loop through each selection and zero out the attributes.
-     for ($i=0; $i < `size $selectionList`; $i++) 
-     setAttr ($selectionList[$i] + ".scaleY") 1;
+    for ($i=0; $i < `size $selectionList`; $i++) {
+         int $lock = `getAttr -lock ($selectionList[$i] + ".scaleY")`;
+            if ($lock == 1) {
+                print ("Scale Y is locked and can't be set to 0 on " + $selectionList[$i]);
+            } else {
+                     setAttr ($selectionList[$i] + ".scaleY") 1;
+             }
+        }  
     
   //loop through each selection and zero out the attributes.
-     for ($i=0; $i < `size $selectionList`; $i++) 
-     setAttr ($selectionList[$i] + ".scaleZ") 1;
+    for ($i=0; $i < `size $selectionList`; $i++) {
+         int $lock = `getAttr -lock ($selectionList[$i] + ".scaleZ")`;
+            if ($lock == 1) {
+                print ("Scale Z is locked and can't be set to 0 on " + $selectionList[$i]);
+            } else {
+                     setAttr ($selectionList[$i] + ".scaleZ") 1;
+             }
+        } 
     
 }
-zeroSAttributes ()
+zeroSAttributes ();
+
 //----------------------End of Scale Zero-----------------------------------
